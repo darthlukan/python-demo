@@ -1,0 +1,12 @@
+---
+- hosts: 127.0.0.1
+  become: false
+  gather_facts: no
+  tasks:
+    - name: Deploy demo-py
+      kubernetes.core.k8s:
+        state: "{{ state | default('present') }}"
+        src: deploy/{{ item }}.yaml
+      loop:
+        - namespace
+        - deployment
