@@ -1,0 +1,19 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-py
+  namespace: demo-py
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-py
+  template:
+    metadata:
+      labels:
+        app: demo-py
+    spec:
+      containers:
+        - name: demo-py
+          image: "quay.io/btomlins/demo-py:latest"
